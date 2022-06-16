@@ -1,25 +1,20 @@
 {
-    "name": "svgtest",
+    "name": "@iamyth/icon-generator",
     "version": "1.0.0",
-    "main": "dist/index.js",
     "license": "MIT",
     "scripts": {
-        "run-script": "ts-node --project config/tsconfig.script.json",
-        "format": "yarn run-script script/format.ts",
-        "lint": "yarn run-script script/lint.ts",
-        "build": "yarn run-script script/build.ts",
-        "test": "TS_NODE_PROJECT='./config/tsconfig.test.json' mocha --require ts-node/register ./test/**/*.test.ts"
+        "icon": "ts-node --project config/tsconfig.script.json script/icon.ts"
     },
-    "files": [
-        "dist/**"
-    ],
     "devDependencies": {
         "@iamyth/logger": "1.0.6",
         "@iamyth/prettier-config": "0.0.2",
         "@types/node": "18.0.0",
+        "@types/yargs": "17.0.10",
         "eslint-config-iamyth": "0.0.10",
         "prettier": "2.7.1",
+        "svgtofont": "3.17.6",
         "ts-node": "10.8.1",
-        "typescript": "4.7.3"
+        "typescript": "4.7.3",
+        "yargs": "17.5.1"
     }
 }

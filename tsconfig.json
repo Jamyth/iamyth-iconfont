@@ -1,12 +1,18 @@
 {
-    "files": [],
-    "include": [],
-    "references": [
-        {
-            "path": "./config/tsconfig.src.json"
-        },
-        {
-            "path": "./config/tsconfig.script.json"
-        },
-    ]
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compilerOptions": {
+        "lib": ["DOM", "ESNext"],
+        "module": "CommonJS",
+
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+
+        "strict": true,
+
+        "target": "ES5",
+        "noEmit": true,
+        "rootDir": "./script"
+    },
+    "include": ["./script"]
 }

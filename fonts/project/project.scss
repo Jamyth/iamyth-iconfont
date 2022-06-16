@@ -1,0 +1,21 @@
+@font-face {font-family: "project";
+  src: url('project.eot?t=1655376225424'); /* IE9*/
+  src: url('project.eot?t=1655376225424#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("project.woff2?t=1655376225424") format("woff2"),
+  url("project.woff?t=1655376225424") format("woff"),
+  url('project.ttf?t=1655376225424') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('project.svg?t=1655376225424#project') format('svg'); /* iOS 4.1- */
+}
+
+[class^="project-"], [class*=" project-"] {
+  font-family: 'project' !important;
+  font-size: 16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.project-home:before { content: "\ea01"; }
+
+$project-home: "\ea01";
+
