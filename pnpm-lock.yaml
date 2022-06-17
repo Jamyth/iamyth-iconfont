@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@iamyth/devtool-utils': 1.0.1
   '@iamyth/logger': 1.0.6
   '@iamyth/prettier-config': 0.0.2
   '@types/node': 18.0.0
@@ -13,6 +14,7 @@ specifiers:
   yargs: 17.5.1
 
 devDependencies:
+  '@iamyth/devtool-utils': 1.0.1_prettier@2.7.1
   '@iamyth/logger': 1.0.6
   '@iamyth/prettier-config': 0.0.2
   '@types/node': 18.0.0
@@ -67,6 +69,19 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iamyth/devtool-utils/1.0.1_prettier@2.7.1:
+    resolution: {integrity: sha512-FDc/e3CJt/LFHtrepiusxpGn6aj59PcUB/iyc6wwPPA6EEldzq30s/fe2GQh9OUbRe/CMDYxd2Ik4g+uNI0+AA==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      prettier: ^2.3.0
+    dependencies:
+      axios: 0.24.0
+      prettier: 2.7.1
+      yargs: 17.3.1
+    transitivePeerDependencies:
+      - debug
     dev: true
 
   /@iamyth/logger/1.0.6:
@@ -595,6 +610,14 @@ packages:
     resolution: {integrity: sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==}
     engines: {node: '>= 4.5.0'}
     hasBin: true
+    dev: true
+
+  /axios/0.24.0:
+    resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
+    dependencies:
+      follow-redirects: 1.15.1
+    transitivePeerDependencies:
+      - debug
     dev: true
 
   /balanced-match/1.0.2:
@@ -1585,6 +1608,16 @@ packages:
 
   /flatted/3.2.5:
     resolution: {integrity: sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==}
+    dev: true
+
+  /follow-redirects/1.15.1:
+    resolution: {integrity: sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
     dev: true
 
   /for-in/1.0.2:

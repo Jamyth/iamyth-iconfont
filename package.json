@@ -3,9 +3,11 @@
     "version": "1.0.0",
     "license": "MIT",
     "scripts": {
-        "icon": "ts-node --project config/tsconfig.script.json script/icon.ts"
+        "icon": "ts-node --project tsconfig.json script/icon.ts",
+        "rename": "ts-node --project tsconfig.json script/rename.ts"
     },
     "devDependencies": {
+        "@iamyth/devtool-utils": "1.0.1",
         "@iamyth/logger": "1.0.6",
         "@iamyth/prettier-config": "0.0.2",
         "@types/node": "18.0.0",
