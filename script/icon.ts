@@ -28,6 +28,7 @@ class IconGenerator {
             this.removeUnwantedFiles();
             this.generateReactComponent();
             this.generateCSS();
+            this.updateHTMLContent();
             this.formatDocument();
         } catch (error) {
             if (error instanceof Error) {
@@ -73,6 +74,11 @@ class IconGenerator {
                 fontHeight: 1000,
                 normalize: true,
             },
+            website: {
+                title: this.projectName,
+                logo: "",
+                links: [],
+            },
         });
     }
 
@@ -93,6 +99,12 @@ class IconGenerator {
         this.logger.task("Removing unwanted files...");
         const cssExtensions = ["css", "less", "module.less", "scss", "styl"];
         const fontExtensions = ["eot", "svg", "symbol.svg", "woff2"];
+        const websites = ["symbol.html", "unicode.html"];
+
+        for (const site of websites) {
+            const filePath = path.join(this.outputDirectory, site);
+            fs.unlinkSync(filePath);
+        }
 
         for (const ext of [...cssExtensions, ...fontExtensions]) {
             const filePath = path.join(this.outputDirectory, `${this.projectName}.${ext}`);
@@ -128,6 +140,18 @@ class IconGenerator {
                 .map((_) => `.g-${this.projectName}-icon`.concat(_))
                 .join("\n"),
         ]);
+    }
+
+    private updateHTMLContent() {
+        const filePath = path.join(this.outputDirectory, "index.html");
+        const html = fs.readFileSync(filePath, { encoding: "utf-8" });
+        const newContent = html.replace(`${this.projectName}.css`, "iconfont.css").replace(
+            // (.*) will capture entire file as a group
+            /<i class="(.{1,50})"><\/i>/g,
+            `<i class="g-${this.projectName}-icon $1" style="font-size: 30px;"></i>`,
+        );
+
+        fs.writeFileSync(filePath, newContent, { encoding: "utf-8" });
     }
 
     private formatDocument() {
