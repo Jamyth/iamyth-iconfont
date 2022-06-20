@@ -176,6 +176,4 @@ class IconGenerator {
     }
 }
 
-// run();
-
 new IconGenerator().run();
