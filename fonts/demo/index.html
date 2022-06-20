@@ -133,6 +133,13 @@
                 font-size: 26px;
             }
         </style>
+
+        <style>
+            .copy {
+                background-color: #4bb543 !important;
+                color: white !important;
+            }
+        </style>
     </head>
 
     <body>
@@ -199,7 +206,23 @@
         </div>
         <p class="links"></p>
         <div class="footer">
-            <div><a target="_blank" href="https://github.com/jaywcjlove/svgtofont">Created By svgtofont</a></div>
+            <div></div>
         </div>
+
+        <script>
+            const list = document.querySelectorAll("li");
+            list.forEach((_) => {
+                const icon = _.children[0];
+                const iconclass = icon.classList.toString().slice("g-demo-icon ".length);
+                _.onclick = () => {
+                    navigator.clipboard.writeText(iconclass);
+                    _.classList.add("copy");
+
+                    setTimeout(() => {
+                        _.classList.remove("copy");
+                    }, 3000);
+                };
+            });
+        </script>
     </body>
 </html>

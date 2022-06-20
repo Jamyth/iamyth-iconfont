@@ -145,13 +145,54 @@ class IconGenerator {
     private updateHTMLContent() {
         const filePath = path.join(this.outputDirectory, "index.html");
         const html = fs.readFileSync(filePath, { encoding: "utf-8" });
-        const newContent = html.replace(`${this.projectName}.css`, "iconfont.css").replace(
-            // (.*) will capture entire file as a group
-            /<i class="(.{1,50})"><\/i>/g,
-            `<i class="g-${this.projectName}-icon $1" style="font-size: 30px;"></i>`,
-        );
+        const newContent = html
+            .replace(`${this.projectName}.css`, "iconfont.css")
+            .replace(
+                // (.*) will capture entire file as a group
+                /<i class="(.{1,50})"><\/i>/g,
+                `<i class="g-${this.projectName}-icon $1" style="font-size: 30px;"></i>`,
+            )
+            .replace('<a target="_blank" href="https://github.com/jaywcjlove/svgtofont">Created By svgtofont</a>', "");
 
-        fs.writeFileSync(filePath, newContent, { encoding: "utf-8" });
+        const headEncloseIndex = newContent.lastIndexOf("</head>");
+        const bodyEncloseIndex = newContent.lastIndexOf("</body>");
+
+        const cssScript = `
+            <style>
+                .copy {
+                    background-color: #4BB543 !important;
+                    color: white !important;
+                }
+            </style>
+        `;
+
+        const script = `
+            <script>
+            const list = document.querySelectorAll('li');
+            list.forEach(_ => {
+                const icon = _.children[0];
+                const iconclass = icon.classList.toString().slice('g-${this.projectName}-icon '.length);
+                _.onclick = () => {
+                    navigator.clipboard.writeText(iconclass);
+                    _.classList.add('copy');
+
+                    setTimeout(() => {
+                        _.classList.remove('copy');
+                    }, 3000)
+                }
+
+            })
+            </script>
+        `;
+
+        const newHTML =
+            newContent.substring(0, headEncloseIndex) +
+            cssScript +
+            newContent.substring(headEncloseIndex, bodyEncloseIndex) +
+            script +
+            newContent.substring(bodyEncloseIndex);
+
+        fs.writeFileSync(filePath, newHTML, { encoding: "utf-8" });
     }
 
     private formatDocument() {
